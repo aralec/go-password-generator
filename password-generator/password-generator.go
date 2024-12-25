@@ -27,11 +27,13 @@ func Generate(desiredLength uint) (string, error) {
 	numbers := randomize(digitsString, nr)
 	specialCharacters := randomize(specialCharactersString, sr)
 
+	// From all-lowercase to randomly mixed case array of letters :
 	mixCase(letters)
 
 	password := append(letters, numbers...)
 	password = append(password, specialCharacters...)
 
+	// After appending numbers and special characters to letters, shuffle the array :
 	rand.Shuffle(len(password), func(i, j int) {
 		if i != j {
 			password[i], password[j] = password[j], password[i]
